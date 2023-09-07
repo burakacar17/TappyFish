@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,6 +14,8 @@ public class Fish : MonoBehaviour
     int maxAngle = 20;
     int minAngle = -60;
 
+    public Score score;
+
     
     void Start()
     {
@@ -24,8 +27,13 @@ public class Fish : MonoBehaviour
     void Update()
     {
         FishSwim();
-        FishRotation();                
+                        
 
+    }
+
+    private void FixedUpdate()
+    {
+        FishRotation();
     }
 
 
@@ -57,4 +65,13 @@ public class Fish : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Obstackle"))
+        {
+            score.Scored();
+        }
+    }
+
 }
