@@ -13,19 +13,24 @@ public class ObstackleSpawner : MonoBehaviour
     
     void Start()
     {
-        InstantiateObstackle();
+        //InstantiateObstackle();
     }
 
     
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >=maxTime)
+        if (GameManager.gameOver == false && GameManager.gameStarted == true)
         {
-            randomY = Random.Range(minY, maxY);
-            InstantiateObstackle();
-            timer = 0;
+            timer += Time.deltaTime;
+            if (timer >= maxTime)
+            {
+                randomY = Random.Range(minY, maxY);
+                InstantiateObstackle();
+                timer = 0;
+            }
         }
+
+        
         
     }
 
