@@ -22,6 +22,7 @@ public class Fish : MonoBehaviour
     SpriteRenderer sp;
     Animator anim;
     public ObstackleSpawner obstackleSpawner;
+    
 
     
     void Start()
@@ -52,6 +53,7 @@ public class Fish : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && GameManager.gameOver == false)
         {
+            
             if (GameManager.gameStarted == false)
             {
                 _rb.gravityScale = 2f;
